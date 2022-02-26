@@ -1,13 +1,155 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+  --primaryColor: #192A32;
+  --secondaryColor: #30505f;
+  --greyColor: #dad8d8;
+  --greyColor-dark: #628594;
+  --fontStyle: 'Roboto', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--fontStyle);
+  user-select: none;
+  font-weight: bold;
+}
+
+body {
+  background-color: var(--primaryColor);
+}
+
+.App {
+  position: relative;
+  display: block;
+  padding: 30px;
+}
+
+.intro {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+}
+.turn_select {
+  position: relative;
+  display: block;
+  margin: auto;
+  width: 50%;
+  margin: 3vw auto;
+  padding: 20px 5vw;
+  background-color: var(--secondaryColor);
+  border-radius: 10px;
+}
+
+.turn_select h3 {
+  text-transform: uppercase;
+  color: var(--greyColor);
+  font-size: calc(12px + 0.5vw);
+  letter-spacing: 2px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.turn_label {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.turn_btn {
+  position: relative;
+  margin: auto;
+  background-color: var(--primaryColor);
+  width: 100%;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.turn_label input {
+  display: none;
+}
+
+.turn_mark {
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.turn_label input:checked ~ .turn_mark {
+  background-color: var(--greyColor);
+}
+
+.turn_select p {
+  text-transform: uppercase;
+  color: var(--greyColor-dark);
+  font-size: calc(10px + 0.3vw);
+  letter-spacing: 2px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+button {
+  position: relative;
+  display: block;
+  text-transform: uppercase;
+  border: none;
+  font-size: calc(12px + 0.3vw);
+  cursor: pointer;
+}
+
+.game_type {
+  position: relative;
+  display: block;
+  width: 50%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.game_type button {
+  width: 100%;
+  padding: 20px 60px;
+  border-radius: 10px;
+  transform: translateY(0px);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.game_type .cpu_btn {
+  margin-bottom: 30px;
+  background-color: #ffb300;
+  box-shadow: 0px 5px 1px 1px rgb(170, 129, 23)
+}
+.game_type .player_btn {
+  background-color: #1fb8ff;
+  box-shadow: 0px 5px 1px 1px rgb(8, 93, 100)
+}
+
+.game_type button:hover {
+  transform: translateY(5px);
+  filter: brightness(1.1);
+  /* box-shadow: inset 0 0 100px 100px rgba(0, 0, 0, 0.1); */
+  box-shadow: none;
+}
+
+@media only screen and (max-width: 800px) {
+  .turn_select, .game_type {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .turn_select, .game_type {
+    width: 95%;
+  }
 }
