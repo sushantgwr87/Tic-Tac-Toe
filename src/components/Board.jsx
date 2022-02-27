@@ -11,18 +11,28 @@ const Board = ({ mark, mode }) => {
           <MarkType name='circle' width='50px' />
         </div>
         <div className="board_turn_btn">
-          <MarkType name='cross' width='20px' />
+          <MarkType name='cross' fill='#dad8d8' width='30px' />
           <span>Turn</span>
         </div>
         <div className="board_reset_btn">
-          <MarkType name='refresh' width='40px' />
+          <button><MarkType name='refresh' fill='#dad8d8' width='30px' /></button>
         </div>
       </div>
-      <div className="board_slot"></div>
+      <div className="board_slot_container">
+        <div className="board_slot">
+          <MarkType name='cross' width='60%' />
+        </div>
+        <div className="board_slot">
+          <MarkType name='cross' width='60%' />
+        </div>
+        <div className="board_slot">
+          <MarkType name='cross' width='60%' />
+        </div>
+      </div>
       <div className="board_footer">
-        <div className="your_score"></div>
-        <div className="draw_score"></div>
-        <div className="opponent_score"></div>
+        <div className="board_score___your"></div>
+        <div className="board_score___draw"></div>
+        <div className="board_score___opponent"></div>
       </div>
     </div>
   )
