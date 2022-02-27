@@ -7,11 +7,11 @@ const Board = ({ mark, mode }) => {
     <div className="board">
       <div className="board_header">
         <div className="board_mark_turn">
-          <MarkType name='cross' width='50px' />
-          <MarkType name='circle' width='50px' />
+          <MarkType name='cross' width='40px' />
+          <MarkType name='circle' width='40px' />
         </div>
         <div className="board_turn_btn">
-          <MarkType name='cross' fill='#dad8d8' width='30px' />
+          <MarkType name='cross' fill='#dad8d8' width='20px' />
           <span>Turn</span>
         </div>
         <div className="board_reset_btn">
@@ -19,15 +19,11 @@ const Board = ({ mark, mode }) => {
         </div>
       </div>
       <div className="board_slot_container">
-        <div className="board_slot">
-          <MarkType name='cross' width='60%' />
-        </div>
-        <div className="board_slot">
-          <MarkType name='cross' width='60%' />
-        </div>
-        <div className="board_slot">
-          <MarkType name='cross' width='60%' />
-        </div>
+        {[...Array(9)].map((e, index) =>
+          <div className="board_slot" key={index}>
+            <MarkType name='cross' width='60%' />
+          </div>
+        )}
       </div>
       <div className="board_footer">
         <div className="board_score___your"></div>
