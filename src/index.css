@@ -2,6 +2,7 @@
 
 :root {
   --primaryColor: #192A32;
+  --primaryColor-dark: #0e171b;
   --secondaryColor: #30505f;
   --greyColor: #dad8d8;
   --greyColor-dark: #628594;
@@ -152,4 +153,95 @@ a {
   .turn_select, .game_type {
     width: 95%;
   }
+}
+
+.board {
+  position: relative;
+  display: flex;
+  margin: 50px auto;
+  width: 40%;
+  /* height: 60%; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* margin: auto; */
+}
+
+.board_header {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.board_mark_turn {
+  position: relative;
+  display: block;
+  margin-right: auto;
+  width: 175px;
+}
+
+.board_turn_btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 175px;
+  margin: auto;
+  /* margin-right: auto; */
+  padding: 15px 30px;
+  border-radius: 10px;
+  background-color: var(--secondaryColor);
+  box-shadow: 0px 5px 1px 0px var(--primaryColor-dark);
+}
+
+.board_turn_btn span {
+  position: relative;
+  color: var(--greyColor);
+  margin-left: 20px;
+  font-size: calc(16px + 0.3vw);
+  text-transform: uppercase;
+}
+
+.board_reset_btn {
+  /* flex: 175px; */
+  width: 175px;
+  position: relative;
+  display: block;
+  margin-left: auto;
+}
+
+.board_reset_btn button {
+  margin-left: auto;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--secondaryColor);
+  box-shadow: 0px 5px 1px 0px var(--primaryColor-dark);
+}
+
+.board_slot_container {
+  /* display: grid; */
+  display: flex;
+  flex-wrap: wrap;
+  /* grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); */
+  gap: 30px;
+  padding: 30px 0;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin: auto;
+  width: 100%;
+}
+
+.board_slot {
+  position: relative;
+  text-align: center;
+  background-color: var(--secondaryColor);
+  /* width: 140px; */
+  width: 175px;
+  height: 175px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 1px 0px var(--primaryColor-dark);
 }
