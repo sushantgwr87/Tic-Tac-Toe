@@ -53,20 +53,26 @@ const MarkType = ({
   name = "",
   fill = defaultColor(name),
   viewBox = "",
-  className="",
+  className = "",
   width = "100%",
   height = "100%"
-}) => (
-  <svg
-    width={width}
-    height={height}
-    className={className}
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox={viewBox || getViewBox(name)}
-    xmlnsXlink="http://www.w3.org/1999/xlink"
-  >
-    {getPath(name, { fill })}
-  </svg>
-);
+}) => {
+
+  if(fill==="")
+    fill=defaultColor(name);
+  
+  return (
+    <svg
+      width={width}
+      height={height}
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox={viewBox || getViewBox(name)}
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    >
+      {getPath(name, { fill })}
+    </svg>
+  )
+};
 
 export default MarkType;
