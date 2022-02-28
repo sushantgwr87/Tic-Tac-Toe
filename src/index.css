@@ -6,6 +6,8 @@
   --secondaryColor: #30505f;
   --greyColor: #dad8d8;
   --greyColor-dark: #628594;
+  --crossColor: #1fb8ff;
+  --circleColor: #ffb300;
   --fontStyle: 'Roboto', sans-serif;
 }
 
@@ -128,7 +130,7 @@ a {
 
 .game_type .cpu_btn {
   margin-bottom: 30px;
-  background-color: #ffb300;
+  background-color: var(--circleColor);
   box-shadow: 0px 5px 1px 1px rgb(170, 129, 23)
 }
 .game_type .player_btn {
@@ -157,11 +159,12 @@ a {
 
 .board {
   position: relative;
-  display: flex;
-  margin: 50px auto;
-  width: 30%;
-  flex-direction: column;
-  justify-content: center;
+  margin: 40px auto 0;
+  overflow: hidden;
+  width: 40%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 3;
   align-items: center;
 }
 
@@ -171,6 +174,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  grid-area: 1 / 1 / 1 / -1;
 }
 
 .board_mark_turn {
@@ -185,8 +189,9 @@ a {
   justify-content: center;
   align-items: center;
   text-align: center;
+  width: 90%;
   margin: auto;
-  padding: 10px 20px;
+  padding: 10px 2vw;
   border-radius: 10px;
   background-color: var(--secondaryColor);
   box-shadow: 0px 5px 1px 0px var(--primaryColor-dark);
@@ -195,8 +200,8 @@ a {
 .board_turn_btn span {
   position: relative;
   color: var(--greyColor);
-  margin-left: 15px;
-  font-size: calc(14px + 0.3vw);
+  margin-left: 10px;
+  font-size: calc(12px + 0.5vw);
   text-transform: uppercase;
 }
 
@@ -208,19 +213,18 @@ a {
 
 .board_reset_btn button {
   margin-left: auto;
-  /* padding: 10px; */
   padding: 8px 8px 4px 8px;
   border-radius: 10px;
-  background-color: var(--secondaryColor);
-  box-shadow: 0px 5px 1px 0px var(--primaryColor-dark);
+  background-color: var(--greyColor);
+  box-shadow: 0px 5px 1px 0px var(--greyColor-dark);
 }
 
 .board_slot_container {
   display: grid;
+  grid-area: 2 / 1 / 2 / -1;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 3vw;
   padding: 20px 0;
-  margin: auto;
   width: 100%;
 }
 
@@ -228,8 +232,66 @@ a {
   position: relative;
   text-align: center;
   background-color: var(--secondaryColor);
-  width: 125px;
-  height: 125px;
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 5px 1px 0px var(--primaryColor-dark);
+}
+
+.board_score___your, .board_score___draw, .board_score___opponent {
+  position: relative;
+  display: block;
+  width: 90%;
+  padding: 15px 0;
+  border-radius: 10px;
+  font-size: calc(15px + 0.2vw);
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--primaryColor);
+}
+
+.board_score___your {
+  background-color: var(--crossColor);
+  margin-right: auto;
+}
+
+.board_score___draw {
+  margin: auto;
+  background-color: var(--greyColor);
+}
+
+.board_score___opponent {
+  margin-left: auto;
+  background-color: var(--circleColor);
+}
+
+.board_score___your span, .board_score___opponent span {
+  margin-left: 10px;
+}
+
+.board_score___your p, .board_score___draw p, .board_score___opponent p {
+  padding-top: 10px;
+}
+
+.board_score___icon {
+  display: inline-block;
+  vertical-align: text-top;
+}
+
+@media only screen and (max-width: 1050px) {
+  .board {
+    width: 60%;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .board {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .board {
+    width: 100%;
+  }
+  .board_slot {
+    padding: 10px 0;
+  }
 }
