@@ -1,22 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import MarkType from './MarkType';
 import Slot from '../partials/Slot';
 import useWinner from '../customHook/useWinner';
+import Score from './Score';
 
 const Board = ({ mark, mode }) => {
 
-  const isCross = mark === "cross";
+  // const isCross = mark === "cross";
 
   const [squares, setSquares] = useState(Array(9).fill(null))
   const [turnValue, setTurnValue] = useState("cross");
 
-  const [scoreData, setScoreData] = useState({
-    win: 0,
-    draw: 0,
-    loss: 0 //Opponent's score
-  })
+  // const [scoreData, setScoreData] = useState({
+  //   win: 0,
+  //   draw: 0,
+  //   loss: 0 //Opponent's score
+  // })
 
-  const { win, draw, loss } = scoreData;
+  // const { win, draw, loss } = scoreData;
 
   const handleClick = (i) => {
     let square = [...squares]
@@ -25,16 +26,19 @@ const Board = ({ mark, mode }) => {
     setTurnValue(turnValue === "cross" ? "circle" : "cross");
   }
 
-  const winnerState = useWinner(squares);
-
+  const winnerState = useWinner(squares, mark);
   console.log(winnerState)
 
-  // if (winnerState.line) {
-  //   if (winnerState.winner === mark)
-  //     setScoreData({ scoreData, win: win + 1 });
-  //   else
-  //     setScoreData({ scoreData, loss: loss + 1 });
-  // }
+  // useEffect(() => {
+  //   if (winnerState) {
+  //     if (winnerState.isWon)
+  //       setScoreData({ ...scoreData, win: win + 1 });
+  //     else if (winnerState.isLoss)
+  //       setScoreData({ ...scoreData, loss: loss + 1 });
+  //     else
+  //       setScoreData({ ...scoreData, draw: draw + 1 });
+  //   }
+  // }, [])
 
   return (
     <div className="board">
@@ -54,7 +58,8 @@ const Board = ({ mark, mode }) => {
           <Slot key={index} keyIndex={index} turnMark={turnValue} changeMark={handleClick} winState={winnerState} />
         )}
       </div>
-      <div className="board_score___your">
+      <Score mark={mark} gameStats={winnerState} />
+      {/* <div className="board_score___your">
         <MarkType name={isCross ? "cross" : "circle"} width='20px' height='20px' fill='#192A32' className='board_score___icon' />
         <span>(You)</span>
         <p>{win}</p>
@@ -67,7 +72,7 @@ const Board = ({ mark, mode }) => {
         <MarkType name={isCross ? "circle" : "cross"} width='20px' height='20px' fill='#192A32' className='board_score___icon' />
         <span>(CPU)</span>
         <p>{loss}</p>
-      </div>
+      </div> */}
     </div>
   )
 }
