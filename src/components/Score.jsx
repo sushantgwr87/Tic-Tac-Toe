@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import MarkType from './MarkType';
 
-const Score = ({ mark, gameStats }) => {
+const Score = ({ mark, gameStats, slotClicked }) => {
 
     const isCross = mark === "cross";
 
@@ -19,7 +19,7 @@ const Score = ({ mark, gameStats }) => {
                 setScoreData({ ...scoreData, win: win + 1 });
             else if (gameStats.isLoss)
                 setScoreData({ ...scoreData, loss: loss + 1 });
-            else
+            else if (slotClicked===9)
                 setScoreData({ ...scoreData, draw: draw + 1 });
         }
     }, [])
