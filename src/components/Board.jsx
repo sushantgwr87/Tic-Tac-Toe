@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import MarkType from './MarkType';
 import Slot from '../partials/Slot';
 import useWinner from '../customHook/useWinner';
+import Modal from './Modal';
 import Score from './Score';
 
 const Board = ({ mark, mode }) => {
@@ -10,12 +11,18 @@ const Board = ({ mark, mode }) => {
   const [turnValue, setTurnValue] = useState("cross");
   const [disable, setDisable] = useState(false);
 
+  const [modalShow, setModalShow] = useState(false);
+
   const handleClick = (i) => {
     let square = [...squares]
     square[i] = turnValue;
     setSquares(square);
     setTurnValue(turnValue === "cross" ? "circle" : "cross");
   }
+
+  const handleModal = () => {
+		setModalShow(true);
+	}
 
   console.log(squares);
   
@@ -42,14 +49,15 @@ const Board = ({ mark, mode }) => {
         <span>Turn</span>
       </div>
       <div className="board_reset_btn">
-        <button><MarkType name='refresh' fill='#192A32' width='30px' /></button>
+        <button onClick={handleModal}><MarkType name='refresh' fill='#192A32' width='30px' /></button>
       </div>
       <div className="board_slot_container">
         {squares.map((e, index) =>
           <Slot key={index} keyIndex={index} turnMark={turnValue} changeMark={handleClick} isDisabled={disable} winState={winnerState} />
         )}
       </div>
-      <Score mark={mark} gameStats={winnerState} slotClicked={slotCheck} />
+      <Score mark={mark} mode={mode} gameStats={winnerState} slotClicked={slotCheck} />
+      <Modal onClose={() => setModalShow(false)} show={modalShow} />
     </div>
   )
 }
