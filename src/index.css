@@ -160,7 +160,7 @@ a {
 .board {
   position: relative;
   margin: 40px auto 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   width: 40%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
