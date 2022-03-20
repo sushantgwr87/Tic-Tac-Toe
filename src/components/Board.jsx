@@ -6,18 +6,9 @@ import Score from './Score';
 
 const Board = ({ mark, mode }) => {
 
-  // const isCross = mark === "cross";
-
   const [squares, setSquares] = useState(Array(9).fill(null))
   const [turnValue, setTurnValue] = useState("cross");
-
-  // const [scoreData, setScoreData] = useState({
-  //   win: 0,
-  //   draw: 0,
-  //   loss: 0 //Opponent's score
-  // })
-
-  // const { win, draw, loss } = scoreData;
+  const [disable, setDisable] = useState(false);
 
   const handleClick = (i) => {
     let square = [...squares]
@@ -26,19 +17,19 @@ const Board = ({ mark, mode }) => {
     setTurnValue(turnValue === "cross" ? "circle" : "cross");
   }
 
+  console.log(squares);
+  
+  var slotCheck = squares.filter(v => v!==null).length;
+
   const winnerState = useWinner(squares, mark);
   console.log(winnerState)
 
-  // useEffect(() => {
-  //   if (winnerState) {
-  //     if (winnerState.isWon)
-  //       setScoreData({ ...scoreData, win: win + 1 });
-  //     else if (winnerState.isLoss)
-  //       setScoreData({ ...scoreData, loss: loss + 1 });
-  //     else
-  //       setScoreData({ ...scoreData, draw: draw + 1 });
-  //   }
-  // }, [])
+  useEffect(() => {
+    if (winnerState.isWon || winnerState.isLoss) {
+      setDisable(true);
+      return;
+    }
+  }, [winnerState])
 
   return (
     <div className="board">
@@ -55,24 +46,10 @@ const Board = ({ mark, mode }) => {
       </div>
       <div className="board_slot_container">
         {squares.map((e, index) =>
-          <Slot key={index} keyIndex={index} turnMark={turnValue} changeMark={handleClick} winState={winnerState} />
+          <Slot key={index} keyIndex={index} turnMark={turnValue} changeMark={handleClick} isDisabled={disable} winState={winnerState} />
         )}
       </div>
-      <Score mark={mark} gameStats={winnerState} />
-      {/* <div className="board_score___your">
-        <MarkType name={isCross ? "cross" : "circle"} width='20px' height='20px' fill='#192A32' className='board_score___icon' />
-        <span>(You)</span>
-        <p>{win}</p>
-      </div>
-      <div className="board_score___draw">
-        <span>Ties</span>
-        <p>{draw}</p>
-      </div>
-      <div className="board_score___opponent">
-        <MarkType name={isCross ? "circle" : "cross"} width='20px' height='20px' fill='#192A32' className='board_score___icon' />
-        <span>(CPU)</span>
-        <p>{loss}</p>
-      </div> */}
+      <Score mark={mark} gameStats={winnerState} slotClicked={slotCheck} />
     </div>
   )
 }
