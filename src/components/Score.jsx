@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import MarkType from './MarkType';
 
-const Score = ({ mark, gameStats, slotClicked }) => {
+const Score = ({ mark, gameStats, slotClicked, mode }) => {
 
     const isCross = mark === "cross";
 
@@ -11,6 +11,8 @@ const Score = ({ mark, gameStats, slotClicked }) => {
         loss: 0 //Opponent's score
     })
 
+    console.log(slotClicked);
+
     const { win, draw, loss } = scoreData;
 
     useEffect(() => {
@@ -19,7 +21,7 @@ const Score = ({ mark, gameStats, slotClicked }) => {
                 setScoreData({ ...scoreData, win: win + 1 });
             else if (gameStats.isLoss)
                 setScoreData({ ...scoreData, loss: loss + 1 });
-            else if (slotClicked===9)
+            else if (slotClicked === 9)
                 setScoreData({ ...scoreData, draw: draw + 1 });
         }
     }, [])
@@ -37,7 +39,7 @@ const Score = ({ mark, gameStats, slotClicked }) => {
             </div>
             <div className="board_score___opponent">
                 <MarkType name={isCross ? "circle" : "cross"} width='20px' height='20px' fill='#192A32' className='board_score___icon' />
-                <span>(CPU)</span>
+                <span>{mode}</span>
                 <p>{loss}</p>
             </div>
         </>
