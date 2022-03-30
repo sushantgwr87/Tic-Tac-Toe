@@ -1,6 +1,5 @@
-import {useState, useEffect} from 'react';
+import { useState } from 'react';
 import MarkType from './MarkType';
-// import Board from './Board';
 import { Link } from 'react-router-dom';
 
 const Intro = ({ setMarkType, setModeType }) => {
@@ -15,10 +14,6 @@ const Intro = ({ setMarkType, setModeType }) => {
     setModeType(e.target.id);
   }
 
-  useEffect(()=>{
-    setMarkType("cross")
-  },[setMarkType])
-  
   return (
     <div className="intro">
       <div className='intro_logo'>
