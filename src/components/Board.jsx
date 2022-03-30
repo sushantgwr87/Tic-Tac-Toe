@@ -4,6 +4,7 @@ import Slot from '../partials/Slot';
 import useWinner from '../customHook/useWinner';
 import Modal from './Modal';
 import Score from './Score';
+import { Link } from 'react-router-dom';
 
 const Board = ({ mark, mode }) => {
 
@@ -21,18 +22,19 @@ const Board = ({ mark, mode }) => {
   }
 
   const handleModal = () => {
-		setModalShow(true);
-	}
+    setModalShow(true);
+  }
 
   console.log(squares);
-  
-  var slotCheck = squares.filter(v => v!==null).length;
+
+  var slotCheck = squares.filter(v => v !== null).length;
 
   const winnerState = useWinner(squares, mark);
   console.log(winnerState)
 
   useEffect(() => {
     if (winnerState.isWon || winnerState.isLoss) {
+      // setModalShow(true);
       setDisable(true);
       return;
     }
@@ -41,8 +43,10 @@ const Board = ({ mark, mode }) => {
   return (
     <div className="board">
       <div className="board_mark_turn">
-        <MarkType name='cross' width='30%' />
-        <MarkType name='circle' width='30%' />
+        <Link to="/">
+          <MarkType name='cross' width='30%' />
+          <MarkType name='circle' width='30%' />
+        </Link>
       </div>
       <div className="board_turn_btn">
         <MarkType name={turnValue} fill='#dad8d8' width='20px' />
