@@ -12,9 +12,10 @@ const Score = ({ mark, gameStats, slotClicked, mode }) => {
     })
 
     console.log(slotClicked);
-
+    
     const { win, draw, loss } = scoreData;
-
+    
+    console.log(scoreData);
     useEffect(() => {
         if (gameStats) {
             if (gameStats.isWon)
@@ -24,7 +25,7 @@ const Score = ({ mark, gameStats, slotClicked, mode }) => {
             else if (slotClicked === 9)
                 setScoreData({ ...scoreData, draw: draw + 1 });
         }
-    }, [])
+    }, [slotClicked])
 
     return (
         <>
