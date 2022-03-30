@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import styles from "../styles/modal.module.css";
+import useMountTransition from "../customHook/useMountTransition";
+import styles from "../styles/modal.module.css"
 
 const Modal = ({ show, onClose }) => {
   const [isBrowser, setIsBrowser] = useState(false);
-//   const hasTransitionedIn = useMountTransition(show, 1000);
-
-  const [error, setError] = useState(false);
+  const hasTransitionedIn = useMountTransition(show, 1000);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.username.value);
-    console.log(e.target.password.value);
   }
 
   useEffect(() => {
@@ -27,11 +24,10 @@ const Modal = ({ show, onClose }) => {
     return () => document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
   }, [onClose]);
 
-  const modalContent =  show ? (
-    <div className={`${styles.modal_overlay} ${ show ? styles.modal_show : styles.modal_hide}`} onClick={onClose}>
-      <div className={`${styles.modal} ${ show ? styles.modal_show : styles.modal_hide}`} onClick={e => e.stopPropagation()}>
+  const modalContent = hasTransitionedIn || show ? (
+    <div className={`${styles.modal_overlay} ${hasTransitionedIn && show ? styles.modal_show : styles.modal_hide}`} onClick={onClose}>
+      <div className={`${styles.modal} ${hasTransitionedIn && show ? styles.modal_show : styles.modal_hide}`} onClick={e => e.stopPropagation()}>
         <div className={styles.modal_header}>
-          {/* <Icon name="sgwr" secondaryfill="#07b053" width="30%" /> */}
           <h3>Admin Login</h3>
         </div>
         <div className={styles.modal_body}>
@@ -40,7 +36,6 @@ const Modal = ({ show, onClose }) => {
             <input className={styles.modal_body_form___input} type="text" placeholder="Enter Username" name="username" required />
             <label className={styles.modal_body_form___label}>Password</label>
             <input className={styles.modal_body_form___input} type="password" placeholder="Enter Password" name="password" required />
-            <p>{error && "Either username or password is incorrect"}</p>
             <button className={styles.modal_body_form___button} type="submit">Login</button>
           </form>
         </div>
