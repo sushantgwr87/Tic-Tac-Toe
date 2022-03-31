@@ -1,7 +1,7 @@
-import { useState} from 'react';
+import { useState,useEffect } from 'react';
 import MarkType from '../components/MarkType';
 
-const Slot = ({ keyIndex, turnMark, changeMark, isDisabled, winState }) => {
+const Slot = ({ keyIndex, turnMark, changeMark, reset, isDisabled, winState }) => {
 
     const [turnValue, setTurnValue] = useState("");
     const [disable, setDisable] = useState(false);
@@ -15,6 +15,14 @@ const Slot = ({ keyIndex, turnMark, changeMark, isDisabled, winState }) => {
         setDisable(true);
         changeMark(keyIndex);
     }
+
+    useEffect(()=> {
+        if(reset)
+        {
+            setTurnValue("")
+            setDisable(false);
+        }
+    },[reset])
 
     return (
         <>
