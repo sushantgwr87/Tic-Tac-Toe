@@ -1,5 +1,5 @@
 <p align="center">
-  
+  <a href="https://app.netlify.com/sites/tictactoe-sg/deploys"><img src="https://api.netlify.com/api/v1/badges/a51c8cbd-2d4c-4f0c-8e16-2771898b0262/deploy-status" alt="Javascript" height="30" style="vertical-align:top; margin:4px"></a>
 </p>
 &nbsp; 
 
