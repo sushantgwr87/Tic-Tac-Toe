@@ -10,7 +10,7 @@ const Modal = ({ show, onClose, status, restart }) => {
   const [isBrowser, setIsBrowser] = useState(false);
   const hasTransitionedIn = useMountTransition(show, 1000);
 
-  const handleRound = (e) => {
+  const handleRound = () => {
     onClose();
   }
 
