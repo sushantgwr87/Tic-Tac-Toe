@@ -15,7 +15,7 @@ const Modal = ({ show, onClose, status, restart }) => {
   }
 
   const handleRestart = () => {
-    localStorage.clear();
+    sessionStorage.clear();
   }
 
   useEffect(() => {

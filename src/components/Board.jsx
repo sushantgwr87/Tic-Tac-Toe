@@ -54,7 +54,7 @@ const Board = ({ mark, mode }) => {
   return (
     <div className="board">
       <div className="board_mark_turn">
-        <Link to="/" onClick={() => localStorage.clear()}>
+        <Link to="/" onClick={() => sessionStorage.clear()}>
           <MarkType name='cross' width='30%' />
           <MarkType name='circle' width='30%' />
         </Link>

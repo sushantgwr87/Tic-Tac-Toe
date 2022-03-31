@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
-import useLocalStorage from '../customHook/useLocalStorage';
+import useSessionStorage from '../customHook/useSessionStorage';
 import MarkType from './MarkType';
 
 const Score = ({ mark, gameStats, slotClicked, mode }) => {
 
     const isCross = mark === "cross";
 
-    const [win, setWin] = useLocalStorage("win", 0)
-    const [loss, setLoss] = useLocalStorage("loss", 0)
-    const [draw, setDraw] = useLocalStorage("draw", 0)
+    const [win, setWin] = useSessionStorage("win", 0)
+    const [loss, setLoss] = useSessionStorage("loss", 0)
+    const [draw, setDraw] = useSessionStorage("draw", 0)
 
     useEffect(() => {
         if (gameStats.isWon)
