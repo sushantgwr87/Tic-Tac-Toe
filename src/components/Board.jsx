@@ -30,8 +30,6 @@ const Board = ({ mark, mode }) => {
     setRestart(true);
   }
 
-  console.log(squares)
-
   const handleModalClose = () => {
     setSquares(Array(9).fill(null));
     setTurnValue("cross");
