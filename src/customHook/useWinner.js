@@ -1,4 +1,4 @@
-export default function useWinner(squares, mark) {
+export default function useWinner(squares, mark, slotclick) {
 
   const lines = [
     [0, 1, 2],
@@ -11,12 +11,17 @@ export default function useWinner(squares, mark) {
     [2, 4, 6],
   ];
 
+  var gameFlag = false;
+
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      gameFlag = true;
       if (squares[a] === mark) {
         return {
           isWon: true,
+          isLoss: false,
+          isDraw: false,
           winner: squares[a],
           line: lines[i]
         }
@@ -24,6 +29,8 @@ export default function useWinner(squares, mark) {
       else {
         return {
           isLoss: true,
+          isWon: false,
+          isDraw: false,
           winner: squares[a],
           line: lines[i]
         }
@@ -31,7 +38,13 @@ export default function useWinner(squares, mark) {
     }
   }
 
-  return {
-    result: "draw",
-  };
+  if (slotclick === 9 && !gameFlag) {
+    return {
+      isWon: false,
+      isLoss: false,
+      isDraw: true
+    }
+  }
+
+  return {};
 }
