@@ -1,11 +1,11 @@
-import useLocalStorage from "./customHook/useLocalStorage";
+import useSessionStorage from "./customHook/useSessionStorage";
 import Board from "./components/Board";
 import Intro from "./components/Intro";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
-  const [mark, setMark] = useLocalStorage("mark", "cross");
-  const [mode, setMode] = useLocalStorage("mode", null);
+  const [mark, setMark] = useSessionStorage("mark", "cross");
+  const [mode, setMode] = useSessionStorage("mode", null);
 
   return (
     <div className="App">
