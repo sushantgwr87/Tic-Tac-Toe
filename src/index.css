@@ -38,6 +38,7 @@ body {
   flex-direction: column;
   margin: auto;
 }
+
 .turn_select {
   position: relative;
   display: block;
@@ -87,7 +88,7 @@ body {
   padding: 20px;
 }
 
-.turn_label input:checked ~ .turn_mark {
+.turn_label input:checked~.turn_mark {
   background-color: var(--greyColor);
 }
 
@@ -100,15 +101,6 @@ body {
   padding-top: 20px;
 }
 
-button {
-  position: relative;
-  display: block;
-  text-transform: uppercase;
-  border: none;
-  font-size: calc(12px + 0.3vw);
-  cursor: pointer;
-}
-
 .game_type {
   position: relative;
   display: block;
@@ -119,48 +111,44 @@ a {
   text-decoration: none;
 }
 
-.game_type button {
-  width: 100%;
-  padding: 20px 60px;
-  border-radius: 10px;
+button {
+  position: relative;
+  display: block;
+  text-transform: uppercase;
+  border: none;
+  font-size: calc(12px + 0.3vw);
+  /* width: 100%; */
   transform: translateY(0px);
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 
-.game_type .cpu_btn {
+.game_type button {
+  width: 100%;
+  padding: 20px 60px;
+}
+
+.cpu_btn {
   margin-bottom: 30px;
   background-color: var(--circleColor);
   box-shadow: 0px 5px 1px 1px rgb(170, 129, 23)
 }
-.game_type .player_btn {
+
+.player_btn {
   background-color: #1fb8ff;
   box-shadow: 0px 5px 1px 1px rgb(8, 93, 100)
 }
 
-.game_type button:hover {
+button:hover {
   transform: translateY(5px);
   filter: brightness(1.1);
-  /* box-shadow: inset 0 0 100px 100px rgba(0, 0, 0, 0.1); */
   box-shadow: none;
-}
-
-@media only screen and (max-width: 800px) {
-  .turn_select, .game_type {
-    width: 80%;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .turn_select, .game_type {
-    width: 95%;
-  }
 }
 
 .board {
   position: relative;
   margin: 40px auto 0;
-  /* overflow: hidden; */
   width: 40%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -208,14 +196,10 @@ a {
 .board_reset_btn {
   position: relative;
   display: block;
-  margin-left: auto;
-}
-
-.board_reset_btn button {
+  background-color: var(--greyColor);
   margin-left: auto;
   padding: 8px 8px 4px 8px;
   border-radius: 10px;
-  background-color: var(--greyColor);
   box-shadow: 0px 5px 1px 0px var(--secondaryColor);
 }
 
@@ -239,14 +223,18 @@ a {
 .board_slot.default {
   background-color: var(--secondaryColor);
 }
+
 .board_slot.win___cross {
   background-color: var(--crossColor);
 }
+
 .board_slot.win___circle {
   background-color: var(--circleColor);
 }
 
-.board_score___your, .board_score___draw, .board_score___opponent {
+.board_score___your,
+.board_score___draw,
+.board_score___opponent {
   position: relative;
   display: block;
   width: 85%;
@@ -273,11 +261,14 @@ a {
   background-color: var(--circleColor);
 }
 
-.board_score___your span, .board_score___opponent span {
+.board_score___your span,
+.board_score___opponent span {
   margin-left: 10px;
 }
 
-.board_score___your p, .board_score___draw p, .board_score___opponent p {
+.board_score___your p,
+.board_score___draw p,
+.board_score___opponent p {
   padding-top: 10px;
 }
 
@@ -291,16 +282,32 @@ a {
     width: 60%;
   }
 }
+
+@media only screen and (max-width: 800px) {
+
+  .turn_select,
+  .game_type {
+    width: 80%;
+  }
+}
+
 @media only screen and (max-width: 700px) {
   .board {
     width: 90%;
   }
 }
+
 @media only screen and (max-width: 500px) {
   .board {
     width: 100%;
   }
+
   .board_slot {
     padding: 10px 0;
+  }
+
+  .turn_select,
+  .game_type {
+    width: 95%;
   }
 }
