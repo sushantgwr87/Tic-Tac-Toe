@@ -1,3 +1,16 @@
+<p align="center">
+  
+</p>
+&nbsp; 
+
+<p align="center">
+  <img src="https://img.shields.io/badge/-Reactjs-fafafa?style=for-the-badge&logo=react&logoColor=blue" alt="Reactjs" height="35">
+  &nbsp; &nbsp; 
+  <img src="https://img.shields.io/badge/-CSS3-1572B6?style=for-the-badge&logo=css3" alt="CSS" height="35">
+  &nbsp; &nbsp; 
+  <img src="https://img.shields.io/badge/-JavaScript-black?style=for-the-badge&logo=javascript" alt="Javascript" height="35">
+</p>
+
 # Tic Tac Toe Game
 A two players tic-tac-toe game created using react and session storage database.
 
