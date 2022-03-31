@@ -58,9 +58,9 @@ const MarkType = ({
   height = "100%"
 }) => {
 
-  if(fill==="")
-    fill=defaultColor(name);
-  
+  if (fill === "")
+    fill = defaultColor(name);
+
   return (
     <svg
       width={width}
