@@ -27,7 +27,7 @@ body {
 .App {
   position: relative;
   display: block;
-  padding: 30px;
+  padding: 0 3vw;
 }
 
 .intro {
@@ -236,13 +236,16 @@ button:hover {
 .board_score___draw,
 .board_score___opponent {
   position: relative;
-  display: block;
-  width: 85%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 92%;
   padding: 15px 0;
   border-radius: 10px;
-  font-size: calc(15px + 0.2vw);
-  text-transform: uppercase;
   text-align: center;
+  font-size: calc(12px + 0.5vw);
+  text-transform: uppercase;
   color: var(--primaryColor);
 }
 
@@ -269,12 +272,8 @@ button:hover {
 .board_score___your p,
 .board_score___draw p,
 .board_score___opponent p {
+  flex: 100%;
   padding-top: 10px;
-}
-
-.board_score___icon {
-  display: inline-block;
-  vertical-align: text-top;
 }
 
 @media only screen and (max-width: 1050px) {

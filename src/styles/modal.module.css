@@ -1,7 +1,7 @@
 .modal {
     display: block;
     background: #284350;
-    width: 50%;
+    width: 60%;
     border-radius: 10px;
     padding: 40px 5vw;
     text-transform: uppercase;
@@ -112,7 +112,7 @@
 }
 
 .modal_winner_declaration h3 {
-    font-size: calc(30px + 0.3vw);
+    font-size: calc(22px + 1vw);
 }
 
 .modal_cross {
@@ -123,14 +123,14 @@
     color: #ffb300;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1000px) {
     .modal {
         width: 80%;
         padding: 20px 4vw;
     }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 550px) {
     .modal {
         border-radius: 0;
         width: 100%;

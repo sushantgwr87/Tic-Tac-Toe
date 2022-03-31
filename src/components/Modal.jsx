@@ -52,7 +52,7 @@ const Modal = ({ show, onClose, status, restart }) => {
           <>
             <h5>You {status.isWon ? "Won" : "Loss"}!</h5>
             <div className={styles.modal_winner_declaration}>
-              <MarkType name={status.winner} width='15%' />
+              <MarkType name={status.winner} width='100px' />
               <h3 className={status.winner === "cross" ? styles.modal_cross : styles.modal_circle}>Takes the Round</h3>
             </div>
           </>
