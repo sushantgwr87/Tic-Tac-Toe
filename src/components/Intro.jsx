@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import MarkType from './MarkType';
 import { Link } from 'react-router-dom';
 
@@ -13,6 +13,10 @@ const Intro = ({ setMarkType, setModeType }) => {
   const handleMode = (e) => {
     setModeType(e.target.id);
   }
+
+  useEffect(() => {
+    setMarkType("cross");
+  }, []);
 
   return (
     <div className="intro">
