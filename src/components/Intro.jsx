@@ -43,9 +43,9 @@ const Intro = ({ setMarkType, setModeType }) => {
         <p>Remember: X goes first</p>
       </div>
       <div className="game_type">
-        <Link to="/board">
-          <button id="cpu" onClick={handleMode} className='cpu_btn'>New Game (VS CPU)</button>
-        </Link>
+        {/* <Link to="/board">
+          <button id="cpu" onClick={handleMode} disabled className='cpu_btn'>New Game (VS CPU)</button>
+        </Link> */}
         <Link to="/board">
           <button id="player" onClick={handleMode} className='player_btn'>New Game (VS Player)</button>
         </Link>
