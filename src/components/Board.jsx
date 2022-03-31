@@ -12,38 +12,51 @@ const Board = ({ mark, mode }) => {
   const [turnValue, setTurnValue] = useState("cross");
   const [disable, setDisable] = useState(false);
 
+  const [clearBoard, setClearBoard] = useState(false);
+
   const [modalShow, setModalShow] = useState(false);
+  const [restart, setRestart] = useState(false);
 
   const handleClick = (i) => {
     let square = [...squares]
     square[i] = turnValue;
     setSquares(square);
+    setClearBoard(false)
     setTurnValue(turnValue === "cross" ? "circle" : "cross");
   }
 
   const handleModal = () => {
     setModalShow(true);
+    setRestart(true);
   }
 
-  console.log(squares);
+  console.log(squares)
+
+  const handleModalClose = () => {
+    setSquares(Array(9).fill(null));
+    setTurnValue("cross");
+    setClearBoard(true)
+    setModalShow(false);
+    setDisable(false);
+  }
 
   var slotCheck = squares.filter(v => v !== null).length;
 
-  const winnerState = useWinner(squares, mark);
-  console.log(winnerState)
+  const winnerState = useWinner(squares, mark, slotCheck);
 
   useEffect(() => {
-    if (winnerState.isWon || winnerState.isLoss) {
-      // setModalShow(true);
+    if (winnerState.isWon || winnerState.isLoss || winnerState.isDraw) {
+      setRestart(false);
+      setModalShow(true);
       setDisable(true);
       return;
     }
-  }, [winnerState])
+  }, [slotCheck])
 
   return (
     <div className="board">
       <div className="board_mark_turn">
-        <Link to="/">
+        <Link to="/" onClick={() => localStorage.clear()}>
           <MarkType name='cross' width='30%' />
           <MarkType name='circle' width='30%' />
         </Link>
@@ -52,16 +65,16 @@ const Board = ({ mark, mode }) => {
         <MarkType name={turnValue} fill='#dad8d8' width='20px' />
         <span>Turn</span>
       </div>
-      <div className="board_reset_btn">
-        <button onClick={handleModal}><MarkType name='refresh' fill='#192A32' width='30px' /></button>
+      <div>
+        <button className="board_reset_btn" onClick={handleModal}><MarkType name='refresh' fill='#192A32' width='30px' /></button>
       </div>
       <div className="board_slot_container">
         {squares.map((e, index) =>
-          <Slot key={index} keyIndex={index} turnMark={turnValue} changeMark={handleClick} isDisabled={disable} winState={winnerState} />
+          <Slot key={index} keyIndex={index} turnMark={turnValue} changeMark={handleClick} isDisabled={disable} reset={clearBoard} winState={winnerState} />
         )}
       </div>
       <Score mark={mark} mode={mode} gameStats={winnerState} slotClicked={slotCheck} />
-      <Modal onClose={() => setModalShow(false)} show={modalShow} />
+      <Modal onClose={handleModalClose} show={modalShow} status={winnerState} restart={restart} />
     </div>
   )
 }
