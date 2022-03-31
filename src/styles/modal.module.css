@@ -42,7 +42,7 @@
 
 .modal_overlay.modal_hide {
     opacity: 0;
-    transition: all 0.5s ease;
+    transition: all 0.4s ease;
 }
 
 .modal_header {
@@ -52,7 +52,6 @@
     text-align: center;
     margin: auto;
     margin-bottom: 30px;
-    /* padding: 30px 0; */
 }
 
 .modal_header h2,.modal_header h3 {
