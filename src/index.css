@@ -27,7 +27,7 @@ body {
 .App {
   position: relative;
   display: block;
-  padding: 3vw;
+  padding: 30px;
 }
 
 .intro {
